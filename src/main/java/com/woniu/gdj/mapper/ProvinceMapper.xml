@@ -9,6 +9,7 @@
     -->
     <id column="provinceID" jdbcType="INTEGER" property="provinceid" />
     <result column="provinceName" jdbcType="VARCHAR" property="provincename" />
+    <collection property="citys" column="provinceid" select="com.woniu.gdj.mapper.CityMapper.findByProvinceid"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--

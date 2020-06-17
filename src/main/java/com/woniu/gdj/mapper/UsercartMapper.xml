@@ -32,7 +32,9 @@
     <result column="currentStartDT_cart" jdbcType="TIMESTAMP" property="currentstartdtCart" />
     <result column="currentEndDT_cart" jdbcType="TIMESTAMP" property="currentenddtCart" />
     <result column="isCurrent_cart" jdbcType="INTEGER" property="iscurrentCart" />
+    <association property="wareimage" column="wareimgid" select="com.woniu.gdj.mapper.WareimageMapper.selectByPrimaryKey"/>
   </resultMap>
+
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbggenerated

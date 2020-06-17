@@ -94,5 +94,8 @@ public interface UserinfoMapper {
      */
     int updateByPrimaryKey(Userinfo record);
 
+    //通过userid查询userinfo
+    Userinfo selectUserinfoByUserid(int userid);
+
     Userinfo supperlierByUserName(String userName);
 }
