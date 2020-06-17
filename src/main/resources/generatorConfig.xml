@@ -8,56 +8,8 @@
     <javaModelGenerator targetPackage="com.woniu.gdj.entity" targetProject="src/main/java" ></javaModelGenerator>
     <sqlMapGenerator targetPackage="com.woniu.gdj.mapper" targetProject="src/main/java" ></sqlMapGenerator>
     <javaClientGenerator targetPackage="com.woniu.gdj.mapper" targetProject="src/main/java" type="XMLMAPPER" />
-    <table schema="" tableName="bannermanager" ></table>
-    <table schema="" tableName="cashlog" ></table>
-    <table schema="" tableName="checkentry" ></table>
-    <table schema="" tableName="city" ></table>
-    <table schema="" tableName="county" ></table>
-    <table schema="" tableName="couponmanage" ></table>
-    <table schema="" tableName="custommessage" ></table>
-    <table schema="" tableName="expressmode" ></table>
-    <table schema="" tableName="expressrate" ></table>
-    <table schema="" tableName="loginlog" ></table>
-    <table schema="" tableName="marketorderdetail" ></table>
-    <table schema="" tableName="marketsorder" ></table>
-    <table schema="" tableName="marketuser" ></table>
-    <table schema="" tableName="merchart" ></table>
-    <table schema="" tableName="merchartorder" ></table>
-    <table schema="" tableName="merchartware" ></table>
-    <table schema="" tableName="mycollection" ></table>
-    <table schema="" tableName="orderreturn" ></table>
-    <table schema="" tableName="preferentialdetail" ></table>
-    <table schema="" tableName="preferentialpackages" ></table>
-    <table schema="" tableName="preferentialpackages" ></table>
-    <table schema="" tableName="perferentialware" ></table>
-    <table schema="" tableName="province" ></table>
-    <table schema="" tableName="receipaddr" ></table>
-    <table schema="" tableName="recharge" ></table>
-    <table schema="" tableName="replaycustommessage" ></table>
-    <table schema="" tableName="returnware" ></table>
-    <table schema="" tableName="role" ></table>
-    <table schema="" tableName="shipments" ></table>
-    <table schema="" tableName="stock" ></table>
+
     <table schema="" tableName="store" ></table>
-    <table schema="" tableName="storereport" ></table>
-    <table schema="" tableName="swopware" ></table>
-    <table schema="" tableName="systemcoupon" ></table>
-    <table schema="" tableName="usercart" ></table>
-    <table schema="" tableName="usercoupon" ></table>
-    <table schema="" tableName="userforder" ></table>
-    <table schema="" tableName="userinfo" ></table>
-    <table schema="" tableName="usrrole" ></table>
-    <table schema="" tableName="ware" ></table>
-    <table schema="" tableName="wareactivity" ></table>
-    <table schema="" tableName="wareactivitytype" ></table>
-    <table schema="" tableName="warecart" ></table>
-    <table schema="" tableName="wareclassificationtype" ></table>
-    <table schema="" tableName="wareclasspec" ></table>
-    <table schema="" tableName="wareimage" ></table>
-    <table schema="" tableName="wareinventory" ></table>
-    <table schema="" tableName="wareprice" ></table>
-    <table schema="" tableName="warereport" ></table>
-    <table schema="" tableName="warespec" ></table>
 
 
   </context>

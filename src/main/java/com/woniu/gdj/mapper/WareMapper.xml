@@ -32,6 +32,8 @@
     <result column="pageTitle" jdbcType="VARCHAR" property="pagetitle" />
     <result column="keywords" jdbcType="VARCHAR" property="keywords" />
     <result column="wareName" jdbcType="VARCHAR" property="warename" />
+    <association property="wareimage" column="wareid" select="com.woniu.gdj.mapper.WareimageMapper.findByWareid"/>
+    <association property="store" column="storeid" select="com.woniu.gdj.mapper.StoreMapper.selectByPrimaryKey"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--
