@@ -93,4 +93,6 @@ public interface UserinfoMapper {
      * @mbggenerated Sat Jun 06 18:59:37 CST 2020
      */
     int updateByPrimaryKey(Userinfo record);
+
+    Userinfo supperlierByUserName(String userName);
 }

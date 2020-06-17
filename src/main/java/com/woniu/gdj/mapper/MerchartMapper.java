@@ -93,4 +93,6 @@ public interface MerchartMapper {
      * @mbggenerated Sat Jun 06 18:59:37 CST 2020
      */
     int updateByPrimaryKey(Merchart record);
+
+    List<Merchart> selectByWare(String queryName);
 }

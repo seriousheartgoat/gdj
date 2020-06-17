@@ -472,4 +472,10 @@
       isDelete = #{isdelete,jdbcType=INTEGER}
     where userID = #{userid,jdbcType=INTEGER}
   </update>
+
+
+  <select id="supperlierByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select * from userinfo
+    where userName = #{userName}
+  </select>
 </mapper>

@@ -93,4 +93,9 @@ public interface WareimageMapper {
      * @mbggenerated Sat Jun 06 18:59:37 CST 2020
      */
     int updateByPrimaryKey(Wareimage record);
+
+    List<Wareimage> selectByWareId(WareimageExample wareimageExample);
+
+    Wareimage selectwareimageid(int wareimageid);
+    Wareimage selectByWareid(int wareid);
 }

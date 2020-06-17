@@ -316,4 +316,15 @@
       principal = #{principal,jdbcType=VARCHAR}
     where merchartId = #{merchartid,jdbcType=INTEGER}
   </update>
+  <select id="selectByWare" resultMap="BaseResultMap" parameterType="java.lang.String">
+        select * from merchart
+        where merchartId in(
+            select merchartId from merchartware
+            where wareId in(
+                select wareId from ware
+            ))
+        <if test="queryName != null">
+          and merchartName like concat(concat("%",#{queryName}),"%")
+        </if>
+  </select>
 </mapper>

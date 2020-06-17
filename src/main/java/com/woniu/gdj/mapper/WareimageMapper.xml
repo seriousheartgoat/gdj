@@ -8,7 +8,7 @@
       This element was generated on Sat Jun 06 18:59:37 CST 2020.
     -->
     <id column="wareImgID" property="wareimgid" jdbcType="INTEGER" />
-    <result column="wareId" property="wareid" jdbcType="INTEGER" />
+<!--    <result column="wareId" property="wareid" jdbcType="INTEGER" />-->
     <result column="storeID" property="storeid" jdbcType="INTEGER" />
     <result column="img" property="img" jdbcType="VARCHAR" />
     <result column="isDefault" property="isdefault" jdbcType="INTEGER" />
@@ -17,6 +17,26 @@
     <result column="theNote" property="thenote" jdbcType="VARCHAR" />
     <result column="url" property="url" jdbcType="VARCHAR" />
   </resultMap>
+  <resultMap id="BaseResultByWareIdMap" type="com.woniu.gdj.entity.Wareimage" extends="BaseResultMap">
+      <association property="ware" javaType="com.woniu.gdj.entity.Ware" column="wareId" select="com.woniu.gdj.mapper.WareMapper.selectByPrimaryKey"></association>
+  </resultMap>
+  <select id="selectByWareId" resultMap="BaseResultByWareIdMap" parameterType="com.woniu.gdj.entity.WareimageExample">
+    select * from wareimage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectwareimageid" resultMap="BaseResultByWareIdMap" parameterType="java.lang.Integer">
+    select * from wareimage
+    where wareImgID = #{wareimageid}
+  </select>
+   <select id="selectByWareid" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select * from wareimage
+    where wareId = #{wareid}
+  </select>
   <sql id="Example_Where_Clause" >
     <!--
       WARNING - @mbggenerated
