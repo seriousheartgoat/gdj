@@ -9,5 +9,5 @@ import com.woniu.gdj.entity.Userinfo;
 public interface IUserinfroService {
     Userinfo supperlierByUserName(String userName);
 
-    void register(Userinfo userinfo);
+    void Myregister(Userinfo userinfo);
 }

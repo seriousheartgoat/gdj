@@ -17,9 +17,11 @@
     <result column="theNote" jdbcType="VARCHAR" property="thenote" />
     <result column="url" jdbcType="VARCHAR" property="url" />
   </resultMap>
+   <resultMap id="BaseResultByWareIdMap" type="com.woniu.gdj.entity.Wareimage" extends="BaseResultMap">
+      <association property="ware" javaType="com.woniu.gdj.entity.Ware" column="wareId" select="com.woniu.gdj.mapper.WareMapper.selectByPrimaryKey"></association>
+  </resultMap>
   <select id="findByWareid" resultMap="BaseResultMap"> select * from wareimage where wareid=#{wareid} </select>
   <select id="findByWareimgid" resultMap="BaseResultMap"> select * from wareimage where wareimgid=#{wareimgid} </select>
-  <sql id="Example_Where_Clause">
   <select id="selectByWareId" resultMap="BaseResultByWareIdMap" parameterType="com.woniu.gdj.entity.WareimageExample">
     select * from wareimage
     <if test="_parameter != null" >

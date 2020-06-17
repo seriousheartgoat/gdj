@@ -57,7 +57,7 @@ public class SupplierLoginController {
         userinfo.setUsername(userName);
         userinfo.setUserpwd(userPwd);
         try{
-            userinfroServiceImpl.register(userinfo);
+            userinfroServiceImpl.Myregister(userinfo);
             return "1";
         }catch (Exception e){
             return "0";
