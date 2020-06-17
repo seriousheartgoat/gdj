@@ -3,6 +3,7 @@ package com.woniu.gdj;
 import com.github.pagehelper.PageHelper;
 import com.woniu.gdj.entity.Wareclassificationtype;
 import com.woniu.gdj.mapper.WareimageMapper;
+import com.woniu.gdj.service.IWareclassificationtypeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
