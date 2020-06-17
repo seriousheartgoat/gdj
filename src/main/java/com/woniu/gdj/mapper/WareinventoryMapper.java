@@ -3,6 +3,8 @@ package com.woniu.gdj.mapper;
 import com.woniu.gdj.entity.Wareinventory;
 import com.woniu.gdj.entity.WareinventoryExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface WareinventoryMapper {
@@ -93,4 +95,7 @@ public interface WareinventoryMapper {
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
     int updateByPrimaryKey(Wareinventory record);
+
+    List<Wareinventory> selectByWareId(Map map);
+    Wareinventory findByWareid(Integer wareId);
 }

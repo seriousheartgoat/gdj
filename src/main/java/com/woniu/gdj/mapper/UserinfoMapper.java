@@ -96,4 +96,6 @@ public interface UserinfoMapper {
 
     //通过userid查询userinfo
     Userinfo selectUserinfoByUserid(int userid);
+
+    Userinfo supperlierByUserName(String userName);
 }
