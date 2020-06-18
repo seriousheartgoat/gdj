@@ -3,6 +3,8 @@ package com.woniu.gdj.mapper;
 import com.woniu.gdj.entity.Merchartorder;
 import com.woniu.gdj.entity.MerchartorderExample;
 import java.util.List;
+import java.util.Map;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface MerchartorderMapper {
@@ -93,4 +95,6 @@ public interface MerchartorderMapper {
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
     int updateByPrimaryKey(Merchartorder record);
+
+    List<Merchartorder> selectByMerchart(Map map);
 }

@@ -20,12 +20,7 @@ public class WareclassificationtypeImpl implements IWareclassificationtypeServic
 
     @Override
     public List<Wareclassificationtype> findAll(String queryName) {
-        WareclassificationtypeExample example = new WareclassificationtypeExample();
-        WareclassificationtypeExample.Criteria criteria = example.createCriteria();
-        if (queryName !=null){
-            criteria.andWareclassificationtypenameLike(queryName);
-        }
-        return wtMapper.selectByExample(example);
+        return wtMapper.selectByQuery(queryName);
     }
 
     @Override

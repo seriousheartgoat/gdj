@@ -22,4 +22,9 @@ public class MerchartServiceImpl implements IMerchartService {
     {
         return merchartMapper.selectByWare(queryName);
     }
+
+    @Override
+    public List<Merchart> list() {
+        return merchartMapper.selectByExample(null);
+    }
 }

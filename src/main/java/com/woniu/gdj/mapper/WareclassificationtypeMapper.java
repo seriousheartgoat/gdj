@@ -93,4 +93,6 @@ public interface WareclassificationtypeMapper {
      * @mbggenerated Tue Jun 16 02:41:08 CST 2020
      */
     int updateByPrimaryKey(Wareclassificationtype record);
+
+    List<Wareclassificationtype> selectByQuery(String queryName);
 }

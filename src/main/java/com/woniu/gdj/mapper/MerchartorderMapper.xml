@@ -8,8 +8,8 @@
       This element was generated on Mon Jun 08 16:26:28 CST 2020.
     -->
     <id column="merchartOrderId" jdbcType="VARCHAR" property="merchartorderid" />
-    <result column="merchartId" jdbcType="INTEGER" property="merchartid" />
-    <result column="wareId" jdbcType="INTEGER" property="wareid" />
+<!--    <result column="merchartId" jdbcType="INTEGER" property="merchartid" />-->
+<!--    <result column="wareId" jdbcType="INTEGER" property="wareid" />-->
     <result column="orderTotalMoney" jdbcType="DECIMAL" property="ordertotalmoney" />
     <result column="wareTotalNumber" jdbcType="INTEGER" property="waretotalnumber" />
     <result column="orderTime" jdbcType="TIMESTAMP" property="ordertime" />
@@ -18,6 +18,29 @@
     <result column="orderNode" jdbcType="VARCHAR" property="ordernode" />
     <result column="supplierConfirmTime" jdbcType="TIMESTAMP" property="supplierconfirmtime" />
   </resultMap>
+  <resultMap id="MeResultMap" type="com.woniu.gdj.entity.Merchartorder" extends="BaseResultMap">
+        <association property="merchart" javaType="com.woniu.gdj.entity.Merchart" column="merchartId" select="com.woniu.gdj.mapper.MerchartMapper.selectByPrimaryKey"></association>
+        <association property="ware" javaType="com.woniu.gdj.entity.Ware" column="wareId" select="com.woniu.gdj.mapper.WareMapper.findById"></association>
+  </resultMap>
+
+  <select id="selectByMerchart" resultMap="MeResultMap" parameterType="java.util.Map">
+         select * from (
+ select * from merchartOrder
+	where merchartId in(
+		select merchartId from merchartware
+			where wareId in(
+					select wareId from ware))) t
+<where>
+    <if test="merchartid!=0">
+        and merchartId = #{merchartid}
+    </if>
+    <if test="orderstate!=null">
+        and orderState = #{orderstate}
+    </if>
+</where>
+
+
+</select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbggenerated
