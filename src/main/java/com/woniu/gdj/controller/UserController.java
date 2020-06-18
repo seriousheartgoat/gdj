@@ -2,12 +2,14 @@ package com.woniu.gdj.controller;
 import com.woniu.gdj.entity.Mycollection;
 import com.woniu.gdj.entity.Userinfo;
 import com.woniu.gdj.service.UserinfoService;
+import org.redisson.Redisson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -20,6 +22,7 @@ public class UserController {
 
     @Autowired
     UserinfoService userinfoService;
+
 
     //处理用户商城页面的登录
     @ResponseBody

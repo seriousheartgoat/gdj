@@ -6,11 +6,14 @@ import com.woniu.gdj.service.UsercartService;
 import com.woniu.gdj.service.UserinfoService;
 import com.woniu.gdj.service.WareService;
 import javafx.application.Application;
+import org.redisson.Redisson;
+import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.annotation.Resource;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -29,6 +32,9 @@ public class UserCartController {
     @Autowired
     UserinfoService userinfoService;
 
+    @Resource
+    private Redisson redisson;
+
 
     @ResponseBody
     @RequestMapping("addCart")
@@ -38,40 +44,49 @@ public class UserCartController {
         Usercart usercart = new Usercart();
         //查询wareid对应的商品信息
         Ware ware = wareService.selectByWareid(wareid);
+        //加一个锁吧,防止用户恶意向订单表中插入多余数据
+        RLock lock = redisson.getLock("usercart");
+        try{
+            lock.lock();
+            //购物车是否有重复的商品
+            Usercart usercart1 = usercartService.checkCount(userid,ware.getWarecode());
+            if(usercart1!=null){
+                //更改购物车中warecount数量
+                BigDecimal add= new BigDecimal("1");
+                BigDecimal checkCount= usercart1.getWarecount().add(add);
+                usercart1.setWarecount(checkCount);
+                int a = usercartService.updateCount(usercart1);
+                if(a!=0) {
+                    map.put("result", true);
+                }else{
+                    map.put("result",false);
+                }
+                return map;
+            }else {
+                //添加购物车记录
+                usercart.setUserid(userid);
+                usercart.setWarecode(ware.getWarecode());
+                usercart.setWarreno(ware.getWareno());
+                usercart.setWarename(ware.getWarename());
+                usercart.setWareprice(ware.getSaleprice());
+                usercart.setStoreid(ware.getStore().getStoreid());
+                usercart.setStorename(ware.getStore().getStorename());
+                usercart.setWareimgid(ware.getWareimage().getWareimgid());
+                usercart.setWarecount(new BigDecimal("1"));
+                int a = usercartService.addCart(usercart);
+                if(a!=0) {
+                    map.put("result", true);
+                }else{
+                    map.put("result",false);
+                }
+                return map;
+            }
 
-        //购物车是否有重复的商品
-        Usercart usercart1 = usercartService.checkCount(userid,ware.getWarecode());
-        if(usercart1!=null){
-            //更改购物车中warecount数量
-            BigDecimal add= new BigDecimal("1");
-            BigDecimal checkCount= usercart1.getWarecount().add(add);
-            usercart1.setWarecount(checkCount);
-            int a = usercartService.updateCount(usercart1);
-            if(a!=0) {
-                map.put("result", true);
-            }else{
-                map.put("result",false);
-            }
-            return map;
-        }else {
-            //添加购物车记录
-            usercart.setUserid(userid);
-            usercart.setWarecode(ware.getWarecode());
-            usercart.setWarreno(ware.getWareno());
-            usercart.setWarename(ware.getWarename());
-            usercart.setWareprice(ware.getSaleprice());
-            usercart.setStoreid(ware.getStore().getStoreid());
-            usercart.setStorename(ware.getStore().getStorename());
-            usercart.setWareimgid(ware.getWareimage().getWareimgid());
-            usercart.setWarecount(new BigDecimal("1"));
-            int a = usercartService.addCart(usercart);
-            if(a!=0) {
-                map.put("result", true);
-            }else{
-                map.put("result",false);
-            }
-            return map;
+        }finally {
+            //解锁
+            lock.unlock();
         }
+
 
     }
 
