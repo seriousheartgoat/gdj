@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface IMerchartService {
     List<Merchart> findAll(String queryName);
+
+    List<Merchart> list();
 }
