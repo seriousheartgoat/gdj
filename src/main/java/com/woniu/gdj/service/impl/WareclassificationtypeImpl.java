@@ -1,6 +1,7 @@
 package com.woniu.gdj.service.impl;
 
 import com.woniu.gdj.entity.Wareclassificationtype;
+import com.woniu.gdj.entity.WareclassificationtypeExample;
 import com.woniu.gdj.mapper.WareclassificationtypeMapper;
 import com.woniu.gdj.service.IWareclassificationtypeService;
 import org.springframework.stereotype.Service;
@@ -18,8 +19,13 @@ public class WareclassificationtypeImpl implements IWareclassificationtypeServic
     private WareclassificationtypeMapper wtMapper;
 
     @Override
-    public List<Wareclassificationtype> findAll() {
-        return wtMapper.selectByExample(null);
+    public List<Wareclassificationtype> findAll(String queryName) {
+        WareclassificationtypeExample example = new WareclassificationtypeExample();
+        WareclassificationtypeExample.Criteria criteria = example.createCriteria();
+        if (queryName !=null){
+            criteria.andWareclassificationtypenameLike(queryName);
+        }
+        return wtMapper.selectByExample(example);
     }
 
     @Override

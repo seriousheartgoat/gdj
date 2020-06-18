@@ -22,11 +22,11 @@ public class WareclassificationtypeController {
     @Resource
     private IWareclassificationtypeService wtServiceImpl;
     @GetMapping("/findAll")
-    public Map findAll(PageInfo<Wareclassificationtype> page){
+    public Map findAll(PageInfo<Wareclassificationtype> page,String queryName){
         //System.out.println(page.getPageNum()+"===="+page.getPageSize());
         /*开启分页插件拦截器*/
         PageHelper.startPage(page.getPageNum(), page.getPageSize());
-        List<Wareclassificationtype> wtList = wtServiceImpl.findAll();
+        List<Wareclassificationtype> wtList = wtServiceImpl.findAll(queryName);
         //System.out.println(wtList);
         //用 PageInfo 对查询结果进行包装
         PageInfo<Wareclassificationtype> pageInfo = new PageInfo(wtList);

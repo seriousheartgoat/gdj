@@ -9,7 +9,7 @@ import java.util.List;
  * @create 2020/06/08 16:25:44
  */
 public interface IWareclassificationtypeService {
-    List<Wareclassificationtype> findAll();
+    List<Wareclassificationtype> findAll(String queryName);
 
     void save(Wareclassificationtype wt);
 
