@@ -6,10 +6,7 @@ import com.woniu.gdj.entity.Merchartorder;
 import com.woniu.gdj.entity.Userinfo;
 import com.woniu.gdj.entity.Ware;
 import com.woniu.gdj.entity.Wareinventory;
-import com.woniu.gdj.service.IMercharorderService;
-import com.woniu.gdj.service.IWareService;
-import com.woniu.gdj.service.IwareInventoryService;
-import com.woniu.gdj.service.WareService;
+import com.woniu.gdj.service.*;
 import org.redisson.Redisson;
 import org.redisson.api.RLock;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,10 +43,10 @@ public class WareController {
     @Resource
     private IwareInventoryService iwareInventoryServiceImpl;
     @GetMapping("/findAll")
-    public Map findAll(PageInfo<Ware> page){
+    public Map findAll(PageInfo<Ware> page,String queryName){
         /*开启分页插件拦截器*/
         PageHelper.startPage(page.getPageNum(), page.getPageSize());
-        List<Ware> wareList = wareServiceImpl.findAll();
+        List<Ware> wareList = wareServiceImpl.findAll(queryName);
         //用 PageInfo 对查询结果进行包装
         PageInfo<Ware> pageInfo = new PageInfo(wareList);
         for (Ware ware : wareList) {
@@ -114,16 +111,19 @@ public class WareController {
         }
     }
     @PostMapping("/save")
-    public void save(Ware ware){
-        wareServiceImpl.save(ware);
+    public void save(Ware ware,int wareinventorynumber){
+        ware.setAdddt(new Date());
+        ware.setIsdelete(1);
+        ware.setIsaudit(0);
+        wareServiceImpl.save(ware,wareinventorynumber);
     }
     @PostMapping("/update")
     public void update(Ware ware){
         wareServiceImpl.update(ware);
     }
     @GetMapping("/delete")
-    public void delete(int wareId){
-        wareServiceImpl.delete(wareId);
+    public void delete(int wareid){
+        wareServiceImpl.delete(wareid);
     }
     @GetMapping("/findById")
     public Ware findById(int wareid){
@@ -143,7 +143,6 @@ public class WareController {
         }
         return map;
     }
-
     //展示商品
     @ResponseBody
     @RequestMapping("wareList")

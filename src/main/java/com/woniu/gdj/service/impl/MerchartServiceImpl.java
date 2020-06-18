@@ -20,7 +20,6 @@ public class MerchartServiceImpl implements IMerchartService {
     @Override
     public List<Merchart> findAll(String queryName)
     {
-        //kgoawnehgi
         return merchartMapper.selectByWare(queryName);
     }
 }

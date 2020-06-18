@@ -1,6 +1,7 @@
 package com.woniu.gdj.service;
 
 import com.woniu.gdj.entity.Ware;
+import com.woniu.gdj.entity.Wareinventory;
 
 import java.util.List;
 
@@ -9,9 +10,9 @@ import java.util.List;
  * @create 2020/06/08 17:38:40
  */
 public interface IWareService {
-    List<Ware> findAll();
+    List<Ware> findAll(String queryName);
 
-    void save(Ware ware);
+    void save(Ware ware,int wareinventorynumber);
 
     void update(Ware ware);
 

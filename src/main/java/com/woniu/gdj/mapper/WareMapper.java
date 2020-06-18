@@ -97,4 +97,6 @@ public interface WareMapper {
     List<Ware> findAll();
 
     Ware findById(int wareId);
+
+    List<Ware> findByName(String queryName);
 }
