@@ -22,7 +22,7 @@ public class WareServiceImpl implements WareService, IWareService {
     //得到所有的商品信息
     @Override
     public List<Ware> getAllWares() {
-        return wareMapper.selectByExample(null);
+        return wareMapper.selectByimageId();
     }
 
     //得到对应id的商品信息

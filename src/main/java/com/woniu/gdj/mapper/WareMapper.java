@@ -99,4 +99,6 @@ public interface WareMapper {
     Ware findById(int wareId);
 
     List<Ware> findByName(String queryName);
+
+    List<Ware> selectByimageId();
 }

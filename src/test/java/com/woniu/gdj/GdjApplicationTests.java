@@ -28,14 +28,6 @@ class GdjApplicationTests {
 
     @Resource
     private IWareclassificationtypeService wtServiceImpl;
-    @Test
-    public void findAll(){
 
-        PageHelper.startPage(1, 5);
-        List<Wareclassificationtype> wtList = wtServiceImpl.findAll();
-        System.out.println(wtList.size());
-
-
-    }
 
 }
