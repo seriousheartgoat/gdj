@@ -10,7 +10,9 @@
     <id column="cityID" jdbcType="INTEGER" property="cityid" />
     <result column="provinceID" jdbcType="INTEGER" property="provinceid" />
     <result column="cityName" jdbcType="VARCHAR" property="cityname" />
+    <collection property="countys" column="cityid" select="com.woniu.gdj.mapper.CountyMapper.findByCityid"/>
   </resultMap>
+  <select id="findByProvinceid" resultMap="BaseResultMap"> select * from city where provinceid=#{provinceid} </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbggenerated

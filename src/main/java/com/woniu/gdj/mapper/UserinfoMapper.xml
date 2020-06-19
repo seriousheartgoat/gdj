@@ -25,6 +25,17 @@
     <result column="theNote" jdbcType="VARCHAR" property="thenote" />
     <result column="isDelete" jdbcType="INTEGER" property="isdelete" />
   </resultMap>
+  <resultMap id="selectUserinfoByUserid" type="com.woniu.gdj.entity.Userinfo" extends="BaseResultMap">
+    <collection property="provinces" column="provinceid" select="com.woniu.gdj.mapper.ProvinceMapper.selectByPrimaryKey"></collection>
+    <collection property="citys" column="cityid" select="com.woniu.gdj.mapper.ProvinceMapper.selectByPrimaryKey"></collection>
+    <collection property="countys" column="countyid" select="com.woniu.gdj.mapper.ProvinceMapper.selectByPrimaryKey"></collection>
+  </resultMap>
+
+  <!--按照userid查询userinfo的属性-->
+  <select id="selectUserinfoByUserid" resultMap="selectUserinfoByUserid" parameterType="java.lang.Integer">
+    select * from userinfo where userid=#{userid}
+  </select>
+
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbggenerated
@@ -472,4 +483,10 @@
       isDelete = #{isdelete,jdbcType=INTEGER}
     where userID = #{userid,jdbcType=INTEGER}
   </update>
+
+
+  <select id="supperlierByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select * from userinfo
+    where userName = #{userName}
+  </select>
 </mapper>

@@ -5,8 +5,28 @@ server:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/gdj?characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/gdj?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     username: root
     password: woniu
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: UTC
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 100MB
+logging:
+  level:
+    root: info
+    com:
+      woniu:
+        gdj:
+          mapper: debug
+pagehelper:
+  helperDialect: mysql
+  reasonable: true
+  supportMethodsArguments: true
+  params: count=countSql
+
 
 

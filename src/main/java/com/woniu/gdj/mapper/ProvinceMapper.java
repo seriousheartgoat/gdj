@@ -93,4 +93,5 @@ public interface ProvinceMapper {
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
     int updateByPrimaryKey(Province record);
+
 }

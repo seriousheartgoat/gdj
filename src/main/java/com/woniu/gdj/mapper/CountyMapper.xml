@@ -11,6 +11,7 @@
     <result column="cityID" jdbcType="INTEGER" property="cityid" />
     <result column="countyName" jdbcType="VARCHAR" property="countyname" />
   </resultMap>
+  <select id="findByCityid" resultMap="BaseResultMap"> select * from county where cityid=#{cityid} </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbggenerated

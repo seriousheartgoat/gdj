@@ -22,6 +22,7 @@
     <result column="collectionBusID" jdbcType="INTEGER" property="collectionbusid" />
     <result column="collectionBusName" jdbcType="VARCHAR" property="collectionbusname" />
     <result column="listImg" jdbcType="VARCHAR" property="listimg" />
+    <association  property="wareimage" column="wareimgid" select="com.woniu.gdj.mapper.WareimageMapper.findByWareimgid"/>
   </resultMap>
   <sql id="Example_Where_Clause">
     <!--

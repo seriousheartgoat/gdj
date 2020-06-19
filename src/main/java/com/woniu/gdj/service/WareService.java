@@ -5,6 +5,10 @@ import com.woniu.gdj.entity.Ware;
 import java.util.List;
 
 public interface WareService {
+
+    List<Ware> getAllWares();
+
+    Ware selectByWareid(int wareid);
     List<Ware> findAll();
 
     Ware findOneById(Integer wareid);
