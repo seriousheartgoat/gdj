@@ -248,7 +248,7 @@ public class WareController {
     @ResponseBody
     @RequestMapping("wareList")
     public PageInfo wareList(int pageNum){
-        PageHelper.startPage(pageNum,3);
+        PageHelper.startPage(pageNum,4);
         List<Ware> wares=wareService.getAllWares();
         PageInfo<Ware> pageInfo = new PageInfo<Ware>(wares);
         return pageInfo;
