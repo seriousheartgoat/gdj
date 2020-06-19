@@ -16,7 +16,8 @@
     <result column="wareOutputNumber" property="wareoutputnumber" jdbcType="INTEGER" />
   </resultMap>
   <resultMap id="BaseResultMapselectByWare" type="com.woniu.gdj.entity.Wareinventory" extends="BaseResultMap">
-      <collection property="ware" column="wareId" javaType="com.woniu.gdj.entity.Ware" select="com.woniu.gdj.mapper.WareMapper.selectByPrimaryKey"></collection>
+      <association property="ware" column="wareId" javaType="com.woniu.gdj.entity.Ware" select="com.woniu.gdj.mapper.WareMapper.selctByKey"></association>
+<!--      <collection property="ware" column="wareId" javaType="com.woniu.gdj.entity.Ware" select="com.woniu.gdj.mapper.WareMapper.selectByPrimaryKey"></collection>-->
   </resultMap>
   <select id="selectByWareId" resultMap="BaseResultMapselectByWare" parameterType="java.util.Map">
     select * from wareinventory

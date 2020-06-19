@@ -18,7 +18,7 @@
     <result column="url" jdbcType="VARCHAR" property="url" />
   </resultMap>
    <resultMap id="BaseResultByWareIdMap" type="com.woniu.gdj.entity.Wareimage" extends="BaseResultMap">
-      <association property="ware" javaType="com.woniu.gdj.entity.Ware" column="wareId" select="com.woniu.gdj.mapper.WareMapper.selectByPrimaryKey"></association>
+      <association property="ware" javaType="com.woniu.gdj.entity.Ware" column="wareId" select="com.woniu.gdj.mapper.WareMapper.selctByKey"></association>
   </resultMap>
   <select id="findByWareid" resultMap="BaseResultMap"> select * from wareimage where wareid=#{wareid} </select>
   <select id="findByWareimgid" resultMap="BaseResultMap"> select * from wareimage where wareimgid=#{wareimgid} </select>

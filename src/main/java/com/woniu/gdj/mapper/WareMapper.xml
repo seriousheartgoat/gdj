@@ -73,6 +73,10 @@
   <select id="selectByimageId"  resultMap="selectByimageIdMap">
     select * from ware
   </select>
+    <select id="selctByKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select * from ware
+    where wareId = #{wareid}
+  </select>
   <sql id="Example_Where_Clause">
     <!--
       WARNING - @mbggenerated
