@@ -122,8 +122,6 @@ public class WareController {
         return map;
     }
 
-    @Autowired
-    WareService wareService;
     @Resource
     private Redisson redisson;
     @Resource
