@@ -8,4 +8,6 @@ public interface StoreService {
     List<Store> findAll();
 
     void aUpdateStore(Store store);
+
+    void add(Store store);
 }

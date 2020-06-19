@@ -370,4 +370,12 @@ public class Store {
     public void setStoremanphone(String storemanphone) {
         this.storemanphone = storemanphone;
     }
+
+    public String getStorename() {
+        return storename;
+    }
+
+    public void setStorename(String storename) {
+        this.storename = storename;
+    }
 }

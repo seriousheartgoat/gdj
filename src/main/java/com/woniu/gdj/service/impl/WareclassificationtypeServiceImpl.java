@@ -17,4 +17,9 @@ public class WareclassificationtypeServiceImpl implements Wareclassificationtype
     public List<Wareclassificationtype> findAll() {
         return wareclassificationtypeMapper.selectByExample(null);
     }
+
+    @Override
+    public void aUpdateWareType(Wareclassificationtype wareType) {
+        wareclassificationtypeMapper.updateByPrimaryKeySelective(wareType);
+    }
 }

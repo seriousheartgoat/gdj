@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface WareclassificationtypeService {
     List<Wareclassificationtype> findAll();
+
+    void aUpdateWareType(Wareclassificationtype wareType);
 }

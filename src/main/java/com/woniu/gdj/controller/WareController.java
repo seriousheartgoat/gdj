@@ -122,6 +122,15 @@ public class WareController {
         return map;
     }
 
+    @PostMapping("commitUpdateWareType")
+    public  Map<String,Object> commitUpdateWareType(Wareclassificationtype wareType){
+        Map<String,Object> map = new HashMap<>();
+        wareclassificationtypeService.aUpdateWareType(wareType);
+
+        map.put("msg",true);
+        return map;
+    }
+
     @Resource
     private Redisson redisson;
     @Resource

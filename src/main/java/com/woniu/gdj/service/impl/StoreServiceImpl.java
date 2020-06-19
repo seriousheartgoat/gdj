@@ -24,4 +24,9 @@ public class StoreServiceImpl implements StoreService {
         System.out.println("impl"+store.getStoreaddress());
         storeMapper.updateByPrimaryKeySelective(store);
     }
+
+    @Override
+    public void add(Store store) {
+        storeMapper.insert(store);
+    }
 }

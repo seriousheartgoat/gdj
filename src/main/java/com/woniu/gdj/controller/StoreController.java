@@ -2,8 +2,10 @@ package com.woniu.gdj.controller;
 
 import com.woniu.gdj.entity.Checkentry;
 import com.woniu.gdj.entity.Store;
+import com.woniu.gdj.entity.Userinfo;
 import com.woniu.gdj.service.CheckentryService;
 import com.woniu.gdj.service.StoreService;
+import com.woniu.gdj.service.UserinfoService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +24,8 @@ public class StoreController {
     StoreService storeService;
     @Resource
     CheckentryService checkentryService;
+    @Resource
+    UserinfoService userinfoService;
 
     @GetMapping("getAllStore")
     public Map<String,Object> getAllStore(){
@@ -54,6 +58,16 @@ public class StoreController {
         Checkentry checkentry = checkentryService.findOneById(checkentryid);
         checkentry.setIscheck(1);
         checkentryService.changeCheck(checkentry);
+
+        Userinfo userinfo = userinfoService.findOneByID(checkentry.getUserid());
+
+        Store store = new Store();
+        store.setStoreman(userinfo.getUsername());
+        store.setStorename(userinfo.getUsername());
+        store.setStoremanphone(checkentry.getStoremanphone());
+        store.setStorephone(checkentry.getStorephone());
+        store.setStoreaddress(checkentry.getStoreaddress());
+        storeService.add(store);
         map.put("msg",true);
         return map;
     }

@@ -1,10 +1,9 @@
 package com.woniu.gdj.service.impl;
 
-import com.woniu.gdj.entity.Loginlog;
-import com.woniu.gdj.entity.Mycollection;
-import com.woniu.gdj.entity.Userinfo;
-import com.woniu.gdj.entity.UserinfoExample;
+import com.woniu.gdj.entity.*;
+import com.woniu.gdj.mapper.MycollectionMapper;
 import com.woniu.gdj.mapper.UserinfoMapper;
+import com.woniu.gdj.service.IUserinfroService;
 import com.woniu.gdj.service.UserinfoService;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +11,12 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @Service
-public class UserinfoServiceImpl implements UserinfoService {
+public class UserinfoServiceImpl implements UserinfoService, IUserinfroService {
 
     @Resource
     UserinfoMapper userinfoMapper;
+    @Resource
+    MycollectionMapper mycollectionMapper;
 
     @Override
     public Userinfo adminLogin(Userinfo userinfo) {
@@ -52,26 +53,48 @@ public class UserinfoServiceImpl implements UserinfoService {
 
     @Override
     public Userinfo login(Userinfo userinfo) {
-        return null;
+        UserinfoExample example = new UserinfoExample();
+        UserinfoExample.Criteria criteria = example.createCriteria();
+        criteria.andUsernameEqualTo(userinfo.getUsername());
+        criteria.andUserpwdEqualTo(userinfo.getUserpwd());
+        List<Userinfo> list = userinfoMapper.selectByExample(example);
+        return list.size()==0?null:list.get(0);
     }
 
     @Override
     public int register(Userinfo userinfo) {
-        return 0;
+        int a = userinfoMapper.insertSelective(userinfo);
+        return a;
     }
 
     @Override
     public Userinfo getUserinfo(int userid) {
-        return null;
+        Userinfo userinfo = userinfoMapper.selectUserinfoByUserid(userid);
+        return userinfo;
     }
 
     @Override
     public int userinfoUpdate(Userinfo userinfo) {
-        return 0;
+        int a = userinfoMapper.updateByPrimaryKeySelective(userinfo);
+        return a;
     }
 
     @Override
     public List<Mycollection> getCollections(int userid) {
-        return null;
+        MycollectionExample example = new MycollectionExample();
+        MycollectionExample.Criteria criteria = example.createCriteria();
+        criteria.andUseridEqualTo(userid);
+        List<Mycollection> list = mycollectionMapper.selectByExample(example);
+        return list;
+    }
+
+    @Override
+    public Userinfo supperlierByUserName(String userName) {
+        return userinfoMapper.supperlierByUserName(userName);
+    }
+
+    @Override
+    public void Myregister(Userinfo userinfo) {
+        userinfoMapper.insertSelective(userinfo);
     }
 }
