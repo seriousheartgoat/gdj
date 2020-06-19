@@ -1,5 +1,8 @@
 package com.woniu.gdj.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Loginlog {
@@ -315,6 +318,7 @@ public class Loginlog {
      *
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getLogindt() {
         return logindt;
     }
@@ -327,6 +331,7 @@ public class Loginlog {
      *
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public void setLogindt(Date logindt) {
         this.logindt = logindt;
     }
@@ -339,6 +344,7 @@ public class Loginlog {
      *
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getLogoutdt() {
         return logoutdt;
     }
@@ -351,6 +357,7 @@ public class Loginlog {
      *
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public void setLogoutdt(Date logoutdt) {
         this.logoutdt = logoutdt;
     }

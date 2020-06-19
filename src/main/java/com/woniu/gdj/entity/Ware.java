@@ -1,5 +1,8 @@
 package com.woniu.gdj.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Data;
 
 import java.math.BigDecimal;
@@ -674,6 +677,7 @@ public class Ware {
      *
      * @mbggenerated Mon Jun 08 16:20:16 CST 2020
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getAdddt() {
         return adddt;
     }
@@ -686,6 +690,7 @@ public class Ware {
      *
      * @mbggenerated Mon Jun 08 16:20:16 CST 2020
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public void setAdddt(Date adddt) {
         this.adddt = adddt;
     }
@@ -698,6 +703,7 @@ public class Ware {
      *
      * @mbggenerated Mon Jun 08 16:20:16 CST 2020
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getLasteditdt() {
         return lasteditdt;
     }
@@ -710,6 +716,7 @@ public class Ware {
      *
      * @mbggenerated Mon Jun 08 16:20:16 CST 2020
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public void setLasteditdt(Date lasteditdt) {
         this.lasteditdt = lasteditdt;
     }

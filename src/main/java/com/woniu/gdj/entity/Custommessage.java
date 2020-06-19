@@ -1,5 +1,8 @@
 package com.woniu.gdj.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.util.Date;
 
 public class Custommessage {
@@ -371,6 +374,7 @@ public class Custommessage {
      *
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getCustommessagedt() {
         return custommessagedt;
     }
@@ -383,6 +387,7 @@ public class Custommessage {
      *
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public void setCustommessagedt(Date custommessagedt) {
         this.custommessagedt = custommessagedt;
     }
