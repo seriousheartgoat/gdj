@@ -93,4 +93,6 @@ public interface LoginlogMapper {
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
     int updateByPrimaryKey(Loginlog record);
+
+    void addLoginlog(Loginlog loginlog);
 }

@@ -1,5 +1,8 @@
 package com.woniu.gdj.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -460,6 +463,7 @@ public class Userinfo {
      *
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss",timezone = "GMT+8")
     public Date getUserregdt() {
         return userregdt;
     }
@@ -472,6 +476,7 @@ public class Userinfo {
      *
      * @mbggenerated Mon Jun 08 16:26:28 CST 2020
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     public void setUserregdt(Date userregdt) {
         this.userregdt = userregdt;
     }
